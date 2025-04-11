@@ -1,5 +1,8 @@
 FROM oven/bun:1 AS builder
 
+# Add the build argument
+ARG CAPROVER_GIT_COMMIT_SHA="unknown"
+
 WORKDIR /app
 
 # Copy package.json and lock files
@@ -16,6 +19,10 @@ COPY . .
 
 # Production image
 FROM oven/bun:1-slim
+
+# Pass the build arg to the production stage
+ARG CAPROVER_GIT_COMMIT_SHA
+ENV GIT_COMMIT_SHA=$CAPROVER_GIT_COMMIT_SHA
 
 WORKDIR /app
 

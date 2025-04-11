@@ -181,7 +181,11 @@ app.post("/webhook", async ({ request, body, set }) => {
 
 // Health check endpoint
 app.get("/health", () => {
-  return { status: "ok", timestamp: new Date().toISOString() };
+  return { 
+    status: "ok", 
+    timestamp: new Date().toISOString(),
+    version: process.env.GIT_COMMIT_SHA || "unknown"
+  };
 });
 
 // Start the server
