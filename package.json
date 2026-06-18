@@ -17,6 +17,6 @@
   "dependencies": {
     "@elysiajs/cors": "^1.2.0",
     "elysia": "^1.2.25",
-    "nodemailer": "^6.10.0"
+    "nodemailer": "^9.0.1"
   }
 }
